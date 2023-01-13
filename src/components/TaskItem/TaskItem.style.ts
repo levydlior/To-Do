@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 import Checkbox from "@mui/material/Checkbox";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 
-
 export const TaskWrapper = styled.div`
   padding: 30px 0px;
   display: flex;
@@ -27,7 +26,7 @@ export const TaskWrapper = styled.div`
   .priority-high {
     height: 80px;
     width: 80px;
-    background-color: #FF0000;
+    background-color: #ff0000;
     border-radius: 50%;
     display: inline-block;
   }
@@ -35,7 +34,7 @@ export const TaskWrapper = styled.div`
   .priority-medium {
     height: 80px;
     width: 80px;
-    background-color: #FFFF00;
+    background-color: #ffff00;
     border-radius: 50%;
     display: inline-block;
   }
@@ -65,5 +64,7 @@ export const GreenCheckbox = styled(Checkbox)`
 `;
 
 export const DeleteIcon = styled(DeleteOutlineIcon)`
-  
-`
+  &:hover {
+    cursor: pointer;
+  }
+`;

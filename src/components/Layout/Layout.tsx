@@ -3,6 +3,7 @@ import { AddTaskButton, MainWrapper } from "./Layout.style";
 
 const fakeTasks = [
   {
+    id: 1,
     title: "Clean car",
     dueDate: "1/13/2022",
     completed: false,
@@ -10,12 +11,14 @@ const fakeTasks = [
     priority: "low" as priorityTypes,
   },
   {
+    id: 2,
     title: "Do Laundry",
     dueDate: "1/14/2022",
-    completed: false,
+    completed: true,
     priority: "medium" as priorityTypes,
   },
   {
+    id: 3,
     title: "Groceries",
     dueDate: "1/15/2022",
     completed: false,
@@ -24,6 +27,7 @@ const fakeTasks = [
 ];
 
 export const Layout = () => {
+
   const renderTask = fakeTasks.map(task => {
     return <TaskItem task={task} />;
   })
