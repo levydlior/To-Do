@@ -6,8 +6,15 @@
 
 # To get this repo running
 
+- front:
 - yarn install
 - yarn start
 
+-back:
+-sudo service postgresql start
+-rails db:migrate db:seed
+-rails s
+
 # Notes
-- used yarn for better performance 
+
+- used yarn for better performance
