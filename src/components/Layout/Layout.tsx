@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { priorityTypes, TaskItem } from "../TaskItem/TaskItem";
 import { AddTaskButton, MainWrapper } from "./Layout.style";
 
@@ -28,7 +29,18 @@ const fakeTasks = [
 
 export const Layout = () => {
 
-  const renderTask = fakeTasks.map(task => {
+  const [tasksArray, setTaskArray] = useState([])
+console.log(tasksArray)
+  useEffect(() => {
+
+    fetch("/tasks")
+      .then(response => response.json())
+      .then(parsedResponse => {
+        setTaskArray(parsedResponse)
+      })
+  }, [])
+
+  const renderTask = tasksArray.map(task => {
     return <TaskItem task={task} />;
   })
 
