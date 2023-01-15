@@ -8,7 +8,7 @@ export type taskType = {
     id: number;
     priority: priorityTypes;
     title: string;
-    dueDate: string;
+    due_date: string;
     completed: boolean;
   };
 };
@@ -18,7 +18,7 @@ export type priorityTypes = "low" | "medium" | "high";
 export const TaskItem = (taskObject: taskType, handleTaskDelete :any) => {
   //destructuring for ease of reading
   const { task } = taskObject;
-  const { title, dueDate, priority, id, completed } = task;
+  const { title, due_date, priority, id, completed } = task;
 
   const renderColorPriority = (priority: string) => {
     if (priority === "low") {
@@ -31,7 +31,7 @@ export const TaskItem = (taskObject: taskType, handleTaskDelete :any) => {
       return "priority-low"
     }
   }
-
+console.log(task)
   return (
     <>
       <TaskWrapper>
@@ -39,7 +39,7 @@ export const TaskItem = (taskObject: taskType, handleTaskDelete :any) => {
         <div className="main">
           <div className="content">
             <div>{title}</div>
-            <div>{dueDate}</div>
+            <div>{due_date}</div>
           </div>
           <div className="actions">
             <GreenCheckbox
