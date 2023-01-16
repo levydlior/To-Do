@@ -8,6 +8,7 @@ export type taskType = {
         completed: boolean;
     };
     handleDelete: (id: number) => void;
+    handleTaskUpdate: (task: any) => void;
 };
 
 export type priorityType = "low" | "medium" | "high"

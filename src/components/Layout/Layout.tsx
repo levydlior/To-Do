@@ -14,6 +14,17 @@ export const Layout = () => {
     setTaskArray(filteredTasksArray)
   }
 
+  const handleTaskUpdate = (updatedTask: any) => {
+    const updatedTasks = tasksArray.map(task => {
+      if (task.id === updatedTask.id) {
+        return updatedTask
+      } else {
+        return task
+      }
+    })
+    setTaskArray(updatedTasks)
+  }
+
   useEffect(() => {
     fetch("/tasks")
       .then(response => response.json())
@@ -23,7 +34,7 @@ export const Layout = () => {
   }, [])
 
   const renderTask = tasksArray.map(task => {
-    return <TaskItem task={task} handleDelete={handleDelete} />;
+    return <TaskItem task={task} handleDelete={handleDelete} key={task.id} handleTaskUpdate={handleTaskUpdate} />;
   })
 
   return (

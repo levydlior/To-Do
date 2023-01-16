@@ -12,3 +12,27 @@ export const deleteRequest = (
     }
   });
 };
+
+export const updateRequest = (
+  callbackFunction: (id: number) => void,
+  updatedTask: any,
+  id: number,
+  completed: boolean
+) => {
+  fetch(`/tasks/${id}`, {
+    method: "PATCH",
+    headers: {
+      "content-type": "application/json",
+      accept: "application/json",
+    },
+    body: JSON.stringify({ ...updatedTask, completed: !completed }),
+  }).then((response) => {
+    if (response.ok) {
+      response.json().then((parsedResponse) => {
+        callbackFunction(parsedResponse);
+      });
+    } else {
+      response.json().then((parsedResponse) => console.log(parsedResponse));
+    }
+  });
+};

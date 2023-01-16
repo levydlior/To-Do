@@ -3,6 +3,7 @@
 - Typescript for strongly typed programming
 - ESlint for linting
 - Prettier for formatting
+- yarn for speed and performance 
 
 # To get this repo running
 
@@ -10,10 +11,10 @@
 - yarn install
 - yarn start
 
--back:
--sudo service postgresql start
--rails db:migrate db:seed
--rails s
+- back:
+- sudo service postgresql start
+- rails db:migrate db:seed
+- rails s
 
 # Notes
 
