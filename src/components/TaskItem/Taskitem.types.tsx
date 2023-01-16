@@ -10,4 +10,4 @@ export type taskType = {
     handleDelete: (id: number) => void;
 };
 
-export type priorityType = "low" | "medium" | "high"
+export type priorityType = "low" | "medium" | "high" | "first"

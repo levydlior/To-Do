@@ -1,11 +1,15 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TaskItem } from "../TaskItem/TaskItem";
 import { AddTaskButton, MainWrapper } from "./Layout.style";
 import { TaskArray } from "./Layout.types";
+import Popover from '@mui/material/Popover';
+import Typography from '@mui/material/Typography';
+import AddATask from "../Add-Task/AddATask";
 
 export const Layout = () => {
 
   const [tasksArray, setTaskArray] = useState<TaskArray[]>([])
+  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
 
   const handleDelete = (id: number) => {
     const filteredTasksArray = tasksArray.filter((singleTask) => {
@@ -26,9 +30,38 @@ export const Layout = () => {
     return <TaskItem task={task} handleDelete={handleDelete} />;
   })
 
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
+
+  const handleTaskCreate = (taskObject: TaskArray) => {
+    setTaskArray([...tasksArray, taskObject])
+    setAnchorEl(null)
+  }
+
   return (
     <MainWrapper>
-      <AddTaskButton variant="contained">Add Task</AddTaskButton>
+      <AddTaskButton aria-describedby={id} variant="contained" onClick={handleClick} >Add Task</AddTaskButton>
+      <Popover
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+      >
+        <Typography sx={{ p: 2 }}><AddATask handleTaskCreate={handleTaskCreate} /></Typography>
+      </Popover>
       {renderTask}
     </MainWrapper>
   );

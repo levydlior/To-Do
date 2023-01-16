@@ -7,3 +7,7 @@ export type TaskArray = {
     due_date: string,
     completed: boolean
 }
+
+export type AddATaskProps = {
+    handleTaskCreate: (taskObject: TaskArray) => void
+}
