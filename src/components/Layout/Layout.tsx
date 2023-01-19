@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { TaskItem } from "../TaskItem/TaskItem";
 import { AddTaskButton, MainWrapper } from "./Layout.style";
-import { TaskArray } from "./Layout.types";
+import { TasksType } from "./Layout.types";
 
 export const Layout = () => {
 
-  const [tasksArray, setTaskArray] = useState<TaskArray[]>([])
+
+  const [tasksArray, setTaskArray] = useState<TasksType[]>([])
 
   const handleDelete = (id: number) => {
     const filteredTasksArray = tasksArray.filter((singleTask) => {
@@ -14,7 +15,7 @@ export const Layout = () => {
     setTaskArray(filteredTasksArray)
   }
 
-  const handleTaskUpdate = (updatedTask: any) => {
+  const handleTaskUpdate = (updatedTask: TasksType) => {
     const updatedTasks = tasksArray.map(task => {
       if (task.id === updatedTask.id) {
         return updatedTask

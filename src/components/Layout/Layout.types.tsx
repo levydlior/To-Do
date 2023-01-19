@@ -1,6 +1,6 @@
 import { priorityType } from "../TaskItem/Taskitem.types"
 
-export type TaskArray = {
+export type TasksType = {
     id: number,
     priority: priorityType,
     title: string,

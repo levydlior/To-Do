@@ -12,13 +12,13 @@ export const TaskItem = (taskObject: taskType) => {
 
   const renderColorPriority = (priority: priorityType) => {
     if (priority === "low") {
-      return "priority-high"
+      return "priority-low"
     }
     if (priority === "medium") {
       return "priority-medium"
     }
     if (priority === "high") {
-      return "priority-low"
+      return "priority-high"
     }
   }
 
