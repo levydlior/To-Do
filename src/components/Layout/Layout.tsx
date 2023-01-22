@@ -5,13 +5,13 @@ import { TaskArray } from "./Layout.types";
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import AddATask from "../Add-Task/AddATask";
+import { taskType } from "../types/Task.type";
 
 export const Layout = () => {
-
-  const [tasksArray, setTaskArray] = useState<TaskArray[]>([])
+  const [tasksArray, setTaskArray] = useState<taskType[]>([])
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
 
-  const handleDelete = (id: number) => {
+  const handleDelete = (id: number | undefined) => {
     const filteredTasksArray = tasksArray.filter((singleTask) => {
       return singleTask.id !== id
     })

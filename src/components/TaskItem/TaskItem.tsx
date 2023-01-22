@@ -1,13 +1,18 @@
 import { DeleteIcon, GreenCheckbox, TaskWrapper } from "./TaskItem.style";
 import CircleOutlinedIcon from "@mui/icons-material/CircleOutlined";
 import CheckCircleOutlinedIcon from "@mui/icons-material/CheckCircleOutlined";
-import { taskType, priorityType } from "./Taskitem.types";
+import { priorityType } from "../types/priority.types";
 import { deleteRequest } from "./Task.request";
+import { taskType } from "../types/Task.type";
 
+export interface taskProps {
+  task: taskType,
+  handleDelete: (id: number | undefined) => void
+}
 
-export const TaskItem = (taskObject: taskType) => {
+export const TaskItem = (taskProps: taskProps) => {
   //destructuring for ease of reading
-  const { task, handleDelete } = taskObject;
+  const { task, handleDelete } = taskProps;
   const { title, due_date, priority, id, completed } = task;
 
   const renderColorPriority = (priority: priorityType) => {

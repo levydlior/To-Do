@@ -1,6 +1,6 @@
 export const deleteRequest = (
-  callbackFunction: (id: number) => void,
-  id: number
+  callbackFunction: (id: number | undefined) => void,
+  id: number | undefined
 ) => {
   fetch(`/tasks/${id}`, { method: "DELETE" }).then((response) => {
     if (response.ok) {

@@ -6,11 +6,11 @@
 
 # To get this repo running
 
-- front:
+- frontend:
 - yarn install
 - yarn start
 
--back:
+-backend:
 -sudo service postgresql start
 -rails db:migrate db:seed
 -rails s

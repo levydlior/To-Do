@@ -26,7 +26,7 @@ export const TaskWrapper = styled.div`
   .priority-high {
     height: 80px;
     width: 80px;
-    background-color: #ff0000;
+    background-color: #940012;
     border-radius: 50%;
     display: inline-block;
   }
@@ -34,7 +34,7 @@ export const TaskWrapper = styled.div`
   .priority-medium {
     height: 80px;
     width: 80px;
-    background-color: #ffff00;
+    background-color: #dcb05c;
     border-radius: 50%;
     display: inline-block;
   }
@@ -42,7 +42,7 @@ export const TaskWrapper = styled.div`
   .priority-low {
     height: 80px;
     width: 80px;
-    background-color: #008000;
+    background-color: #498a5e;
     border-radius: 50%;
     display: inline-block;
   }

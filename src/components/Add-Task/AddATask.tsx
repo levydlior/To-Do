@@ -1,7 +1,7 @@
-import { useState } from "react"
-import { AddATaskType } from "./AddATask.types"
+import { useState, FormEvent } from "react"
 import React from "react"
-import { priorityType } from "../TaskItem/Taskitem.types"
+import { priorityType } from "../types/priority.types";
+import { taskType } from "../types/Task.type";
 import { AddATaskForm } from "./AddATask.style"
 import TextField from '@mui/material/TextField';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
@@ -11,12 +11,16 @@ import { addATaskCreate } from './AddTask.requests'
 import { AddATaskProps } from './../Layout/Layout.types'
 
 
+
 function AddATask(addTaskObject: AddATaskProps) {
   const { handleTaskCreate } = addTaskObject
 
+
+
+
   const [priorityError, setPriorityError] = useState("")
 
-  const [taskForm, setTaskForm] = useState<AddATaskType>({
+  const [taskForm, setTaskForm] = useState<taskType>({
     title: "",
     priority: "first",
     due_date: "",
@@ -36,10 +40,10 @@ function AddATask(addTaskObject: AddATaskProps) {
     setTaskForm({ ...taskForm, priority: value as priorityType })
   }
 
-  const handleTaskSubmit = (event: any) => {
+  const handleTaskSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     if (priority === "first") {
-      setPriorityError("please select a priority")
+      setPriorityError("Please select a priority")
     } else {
       setPriorityError("")
       addATaskCreate(taskForm, handleTaskCreate)

@@ -1,9 +1,9 @@
-import { AddATaskType } from "./AddATask.types";
+import { taskType } from "../types/Task.type";
 import { TaskArray } from "./../Layout/Layout.types";
 
 export const addATaskCreate = (
-  taskForm: AddATaskType,
-  callbackfunction: (taskObject: TaskArray) => void
+  taskForm: taskType,
+  callbackFunction: (taskObject: TaskArray) => void
 ) => {
   fetch("/tasks", {
     method: "POST",
@@ -15,7 +15,7 @@ export const addATaskCreate = (
   }).then((response) => {
     if (response.ok) {
       response.json().then((parsedResponse) => {
-        callbackfunction(parsedResponse);
+        callbackFunction(parsedResponse);
       });
     } else {
       response.json().then((parsedResponse) => console.log(parsedResponse));
