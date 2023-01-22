@@ -1,26 +1,21 @@
 import { DeleteIcon, GreenCheckbox, TaskWrapper } from "./TaskItem.style";
 import CircleOutlinedIcon from "@mui/icons-material/CircleOutlined";
 import CheckCircleOutlinedIcon from "@mui/icons-material/CheckCircleOutlined";
+import { priorityType } from "../types/priority.types";
+import { deleteRequest } from "./Task.request";
+import { taskType } from "../types/Task.type";
 
-export type taskType = {
-  //Figure out how to not have to make this be an object in an object
-  task: {
-    id: number;
-    priority: priorityTypes;
-    title: string;
-    due_date: string;
-    completed: boolean;
-  };
-};
+export interface taskProps {
+  task: taskType,
+  handleDelete: (id: number | undefined) => void
+}
 
-export type priorityTypes = "low" | "medium" | "high";
-
-export const TaskItem = (taskObject: taskType, handleTaskDelete :any) => {
+export const TaskItem = (taskProps: taskProps) => {
   //destructuring for ease of reading
-  const { task } = taskObject;
+  const { task, handleDelete } = taskProps;
   const { title, due_date, priority, id, completed } = task;
 
-  const renderColorPriority = (priority: string) => {
+  const renderColorPriority = (priority: priorityType) => {
     if (priority === "low") {
       return "priority-high"
     }
@@ -31,7 +26,7 @@ export const TaskItem = (taskObject: taskType, handleTaskDelete :any) => {
       return "priority-low"
     }
   }
-console.log(task)
+
   return (
     <>
       <TaskWrapper>
@@ -47,7 +42,7 @@ console.log(task)
               checkedIcon={<CheckCircleOutlinedIcon />}
               checked={completed}
             />
-            <DeleteIcon onClick={(id) => handleTaskDelete}/>
+            <DeleteIcon onClick={() => deleteRequest(handleDelete, id)} />
           </div>
         </div>
       </TaskWrapper>
