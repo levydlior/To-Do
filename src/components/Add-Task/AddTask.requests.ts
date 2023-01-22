@@ -1,9 +1,8 @@
 import { taskType } from "../types/Task.type";
-import { TaskArray } from "./../Layout/Layout.types";
 
 export const addATaskCreate = (
   taskForm: taskType,
-  callbackFunction: (taskObject: TaskArray) => void
+  callbackFunction: (taskObject: taskType) => void
 ) => {
   fetch("/tasks", {
     method: "POST",

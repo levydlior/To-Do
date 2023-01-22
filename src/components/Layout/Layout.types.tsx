@@ -1,13 +1,5 @@
-import { priorityType } from "../types/priority.types"
-
-export type TaskArray = {
-    id: number,
-    priority: priorityType,
-    title: string,
-    due_date: string,
-    completed: boolean
-}
+import { taskType } from "../types/Task.type"
 
 export type AddATaskProps = {
-    handleTaskCreate: (taskObject: TaskArray) => void
+    handleTaskCreate: (taskObject: taskType) => void
 }
