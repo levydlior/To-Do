@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { TaskItem } from "../TaskItem/TaskItem";
 import { AddTaskButton, MainWrapper } from "./Layout.style";
-import { TaskArray } from "./Layout.types";
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import AddATask from "../Add-Task/AddATask";
@@ -18,6 +17,17 @@ export const Layout = () => {
     setTaskArray(filteredTasksArray)
   }
 
+  const handleTaskUpdate = (updatedTask: taskType) => {
+    const updatedTasks = tasksArray.map(task => {
+      if (task.id === updatedTask.id) {
+        return updatedTask
+      } else {
+        return task
+      }
+    })
+    setTaskArray(updatedTasks)
+  }
+
   useEffect(() => {
     fetch("/tasks")
       .then(response => response.json())
@@ -27,7 +37,7 @@ export const Layout = () => {
   }, [])
 
   const renderTask = tasksArray.map(task => {
-    return <TaskItem task={task} handleDelete={handleDelete} />;
+    return <TaskItem task={task} handleDelete={handleDelete} handleTaskUpdate={handleTaskUpdate} key={task.id} />;
   })
 
 
@@ -42,7 +52,7 @@ export const Layout = () => {
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
 
-  const handleTaskCreate = (taskObject: TaskArray) => {
+  const handleTaskCreate = (taskObject: taskType) => {
     setTaskArray([...tasksArray, taskObject])
     setAnchorEl(null)
   }
